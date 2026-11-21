@@ -9,7 +9,7 @@ There are some methods available for every field that allow customizing the look
 Set the field wrapper classes that should be applied in the create / edit views.
 
 ```php
-use R64\NovaFields\Text;
+use Dukstra\NovaFields\Text;
 
 Text::make('Name')->fieldClasses('w-1/2 px-8 py-8'),
 ```
@@ -19,7 +19,7 @@ Text::make('Name')->fieldClasses('w-1/2 px-8 py-8'),
 Set the field classes that should be applied in the index view.
 
 ```php
-use R64\NovaFields\Text;
+use Dukstra\NovaFields\Text;
 
 Text::make('Name')->indexClasses('whitespace-no-wrap font-bold'),
 ```
@@ -29,7 +29,7 @@ Text::make('Name')->indexClasses('whitespace-no-wrap font-bold'),
 Set the input classes that should be applied in the create / edit views.
 
 ```php
-use R64\NovaFields\Text;
+use Dukstra\NovaFields\Text;
 
 Text::make('Name')->inputClasses('w-1/2 form-control form-input form-input-bordered'),
 ```
@@ -39,7 +39,7 @@ Text::make('Name')->inputClasses('w-1/2 form-control form-input form-input-borde
 Set the label classes that should be applied.
 
 ```php
-use R64\NovaFields\Text;
+use Dukstra\NovaFields\Text;
 
 Text::make('Name')->labelClasses('w-1/5 px-8 py-8'),
 ```
@@ -49,7 +49,7 @@ Text::make('Name')->labelClasses('w-1/5 px-8 py-8'),
 Set the container classes that should be applied.
 
 ```php
-use R64\NovaFields\Text;
+use Dukstra\NovaFields\Text;
 
 Text::make('Name')->wrapperClasses('flex border-b border-40 border-t'),
 ```
@@ -59,7 +59,7 @@ Text::make('Name')->wrapperClasses('flex border-b border-40 border-t'),
 Set the label wrapper classes that should be applied in the panel of detail view.
 
 ```php
-use R64\NovaFields\Text;
+use Dukstra\NovaFields\Text;
 
 Text::make('Name')->panelLabelClasses('w-1/4 py-4'),
 ```
@@ -69,7 +69,7 @@ Text::make('Name')->panelLabelClasses('w-1/4 py-4'),
 Set the field wrapper classes that should be applied in the panel of detail view.
 
 ```php
-use R64\NovaFields\Text;
+use Dukstra\NovaFields\Text;
 
 Text::make('Name')->panelFieldClasses('w-3/4 py-4'),
 ```
@@ -79,7 +79,7 @@ Text::make('Name')->panelFieldClasses('w-3/4 py-4'),
 Set the wrapper classes that should be applied in the panel of detail view.
 
 ```php
-use R64\NovaFields\Text;
+use Dukstra\NovaFields\Text;
 
 Text::make('Name')->panelWrapperClasses('flex border-b border-40'),
 ```
@@ -89,7 +89,7 @@ Text::make('Name')->panelWrapperClasses('flex border-b border-40'),
 Set the excerpt classes that should be applied.
 
 ```php
-use R64\NovaFields\Textarea;
+use Dukstra\NovaFields\Textarea;
 
 Textare::make('Name')->excerptClasses('cursor-pointer dim inline-block text-primary font-bold'),
 ```
@@ -101,7 +101,7 @@ If you prefer, instead of setting all the classes, you might add or remove one o
 Just add the prefix `add` or `remove` to the name of the method
 
 ```php
-use R64\NovaFields\Text;
+use Dukstra\NovaFields\Text;
 
 Text::make('Name')->addWrapperClasses('border-t'),
 // flex border-b border-40 border-t
@@ -113,7 +113,7 @@ Text::make('Name')->removeWrapperClasses('border-40'),
 You can also add an optional callback as a condition to add or remove the classes.
 
 ```php
-use R64\NovaFields\Text;
+use Dukstra\NovaFields\Text;
 
 Date::make('Expires at')->addIndexClasses('text-danger', fn ($resource) => $resource->hasExpired()),
 // text-danger
@@ -137,7 +137,7 @@ Futhermore you can use also
 Indicate that the label should be hidden in forms.
 
 ```php
-use R64\NovaFields\Text;
+use Dukstra\NovaFields\Text;
 
 Text::make('Name')->hideLabelInForms(),
 
@@ -148,7 +148,7 @@ Text::make('Name')->hideLabelInForms(),
 Indicate that the label should be hidden in detail view.
 
 ```php
-use R64\NovaFields\Text;
+use Dukstra\NovaFields\Text;
 
 Text::make('Name')->hideLabelInDetail(),
 
@@ -159,8 +159,8 @@ Text::make('Name')->hideLabelInDetail(),
 Show or hide the field based on other field value. Only available as subfield of [Json](custom.md#json) field.
 
 ```php
-use R64\NovaFields\JSON;
-use R64\NovaFields\Text;
+use Dukstra\NovaFields\JSON;
+use Dukstra\NovaFields\Text;
 
 JSON::make('Group', [
   Text::make('First Name'),
@@ -174,7 +174,7 @@ JSON::make('Group', [
 Sets the input as disabled. A callback can be passed as param
 
 ```php
-use R64\NovaFields\Text;
+use Dukstra\NovaFields\Text;
 
   Text::make('Name')->readOnly(),
 
@@ -191,7 +191,7 @@ use R64\NovaFields\Text;
 Set the input as disabled on create view.
 
 ```php
-use R64\NovaFields\Text;
+use Dukstra\NovaFields\Text;
 
   Text::make('Name')->readOnlyOnCreate(),
 ])
@@ -202,7 +202,7 @@ use R64\NovaFields\Text;
 Set the input as disabled on update view.
 
 ```php
-use R64\NovaFields\Text;
+use Dukstra\NovaFields\Text;
 
   Text::make('Name')->readOnlyOnUpdate(),
 ])
@@ -213,7 +213,7 @@ use R64\NovaFields\Text;
 Specify that the index view should show as a link to the resource.
 
 ```php
-use R64\NovaFields\Text;
+use Dukstra\NovaFields\Text;
 
   Text::make('Name')->showLinkInIndex(),
 ])
@@ -226,7 +226,7 @@ use R64\NovaFields\Text;
 Sets the input placeholder
 
 ```php
-use R64\NovaFields\Text;
+use Dukstra\NovaFields\Text;
 
   Text::make('Name')->placeholder(),
 ])

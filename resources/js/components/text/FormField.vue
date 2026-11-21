@@ -7,7 +7,7 @@
     :wrapper-classes="wrapperClasses"
     :label-classes="labelClasses"
   >
-    <template slot="field">
+    <template #field>
       <input
         :id="field.name"
         :dusk="field.attribute"

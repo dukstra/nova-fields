@@ -1,8 +1,8 @@
-# Getting Started
+# Dukstra Nova Fields
 
 [Documentation](https://nova-fields.netlify.com/)
 
-Nova Fields is a collection of rewriten "native" fields that comes with Nova. We are also adding new fields and utilities as we find the need.
+This fork ports the RSA Pharma-used Nova Fields to Nova 5 and Vue 3.
 
 The idea here is making them more configurable and reusable in package development. These components have a lot of new methods to customize the look and feel, behavior, etc...
 
@@ -10,47 +10,23 @@ Vue components also emit events that propagates up to the chain so are ideal to 
 
 Looking forward to see your feedback.
 
-### Available fields:
-
-- [x] ID
-- [x] Text
-- [x] Number
-- [x] Textarea
-- [x] Select
-- [x] Password
-- [x] Boolean
-- [x] Trix
-- [x] File
-- [x] Image
-- [x] BelongsTo
-- [x] Currency
-- [ ] Status
-- [ ] Avatar
-- [ ] Gravatar
-- [ ] Code
-- [ ] Country
-- [x] Date
-- [x] DateTime
-- [ ] Markdown
-- [ ] Place
-- [ ] Timezone
-
-### Custom Fields
-
-- [x] Autocomplete
-- [x] JSON
-- [x] Row
+The Nova 5 frontend bundle registers the `Text`, `Number`, `Boolean`, and
+`File` fields used by the application. Other upstream field classes remain
+outside this port and should not be used until their Nova 5 behavior is tested.
 
 ## Install
 
 Run this command in your nova project:
-`composer require 64robots/nova-fields`
+`composer require dukstra/nova-fields`
+
+Development build: install the Composer development dependencies first so the
+Nova Devtool package is available, then run `npm ci` and `npm run production`.
 
 Usage:
 
 ```php
-// use R64\NovaFields\<NAME OF THE FIELD>;
-use R64\NovaFields\Boolean;
+// use Dukstra\NovaFields\<NAME OF THE FIELD>;
+use Dukstra\NovaFields\Boolean;
 
 Boolean::make('Activo', 'active')
                 ->yesLabel('Yeah')

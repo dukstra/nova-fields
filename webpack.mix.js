@@ -1,16 +1,11 @@
-let mix = require('laravel-mix')
+const mix = require('laravel-mix')
+const NovaExtension = require('laravel-nova-devtool')
+
+mix.extend('nova', new NovaExtension())
 
 mix.setPublicPath('dist')
-   .js('resources/js/field.js', 'dist/js')
-   .sass('resources/sass/field.scss', 'dist/css')
-   .babelConfig({
-      plugins: [
-        [
-          'component',
-          {
-            libraryName: 'element-ui',
-            styleLibraryName: 'theme-chalk'
-          }
-        ]
-      ]
-    })
+  .js('resources/js/field.js', 'js')
+  .vue({ version: 3 })
+  .sass('resources/sass/field.scss', 'css')
+  .nova('dukstra/nova-fields')
+  .version()

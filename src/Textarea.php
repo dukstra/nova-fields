@@ -1,6 +1,6 @@
 <?php
 
-namespace R64\NovaFields;
+namespace Dukstra\NovaFields;
 
 use Laravel\Nova\Fields\Textarea as NovaTextarea;
 

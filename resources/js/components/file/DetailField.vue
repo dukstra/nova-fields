@@ -7,7 +7,8 @@
     :field-classes="panelFieldClasses"
     :wrapper-classes="panelWrapperClasses"
   >
-    <div slot="value">
+    <template #value>
+      <div>
       <template v-if="shouldShowLoader">
         <ImageLoader
           :src="field.thumbnailUrl"
@@ -51,7 +52,8 @@
           </span>
         </a>
       </p>
-    </div>
+      </div>
+    </template>
   </r64-panel-item>
 </template>
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace R64\NovaFields;
+namespace Dukstra\NovaFields;
 
 use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Fields\File as NovaFile;

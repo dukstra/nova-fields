@@ -7,7 +7,7 @@
     :wrapper-classes="wrapperClasses"
     :label-classes="labelClasses"
   >
-    <template slot="field">
+    <template #field>
       <div
         v-if="hasValue"
         class="mb-6"
@@ -60,66 +60,44 @@
       <span
         class="form-file mr-4"
         v-if="!isFilledRowSubfield"
+        @dragover.prevent="field.draggable"
+        @drop.prevent="field.draggable && onDrop($event)"
       >
-        <el-upload
-          v-if="field.draggable"
-          drag
-          action
-          :auto-upload="false"
-          :on-change="fileChange"
-          :show-file-list="false"
+        <input
+          ref="fileField"
+          :dusk="field.attribute"
+          :class="inputClasses"
+          type="file"
+          :id="idAttr"
+          name="name"
+          @change="fileChange"
+        />
+        <label
+          :for="labelFor"
+          class="form-file-btn btn btn-default btn-primary"
         >
-          <div class="p-8 text-80">
-            <div
-              v-if="fileName"
-              class="flex items-center"
-            >
-              <span>{{ fileName }}</span>
-
-              <button
-                v-if="field.previewBeforeUpload"
-                class="appearance-none cursor-pointer text-70 hover:text-primary ml-3 pt-2"
-                title="Preview"
-                @click.stop.prevent="onPreviewFile"
-              >
-                <icon
-                  type="view"
-                  class="w-8"
-                />
-              </button>
-
-              <button
-                class="appearance-none cursor-pointer text-70 hover:text-primary ml-3"
-                title="Delete"
-                @click.stop.prevent="removeFile"
-              >
-                <icon type="delete" />
-              </button>
-            </div>
-            <div v-else>{{__('Click here or drop the file to upload')}}</div>
-          </div>
-        </el-upload>
-        <template v-else>
-          <input
-            ref="fileField"
-            :dusk="field.attribute"
-            :class="inputClasses"
-            type="file"
-            :id="idAttr"
-            name="name"
-            @change="fileChange"
-          />
-          <label
-            :for="labelFor"
-            class="form-file-btn btn btn-default btn-primary"
-          >
-            {{__('Choose File')}}
-          </label>
-        </template>
+          {{ field.draggable ? __('Click here or drop the file to upload') : __('Choose File') }}
+        </label>
+        <button
+          v-if="field.draggable && fileName && field.previewBeforeUpload"
+          class="ml-3 cursor-pointer text-primary"
+          type="button"
+          @click.stop.prevent="onPreviewFile"
+        >
+          {{ __('Preview') }}
+        </button>
+        <button
+          v-if="field.draggable && fileName"
+          class="ml-3 cursor-pointer text-primary"
+          type="button"
+          @click.stop.prevent="clearSelectedFile"
+        >
+          {{ __('Delete') }}
+        </button>
       </span>
 
       <span
-        v-if="!field.draggable && !isFilledRowSubfield"
+        v-if="!isFilledRowSubfield"
         class="text-gray-50"
       >
         {{ currentLabel }}
@@ -148,7 +126,6 @@
 
 <script>
 import { FormField, HandlesValidationErrors, Errors } from 'laravel-nova'
-import { Upload } from 'element-ui'
 import ImageLoader from '../../nova/ImageLoader'
 import DeleteButton from '../../nova/DeleteButton'
 import R64Field from '../../mixins/R64Field'
@@ -156,7 +133,7 @@ import R64Field from '../../mixins/R64Field'
 export default {
   mixins: [HandlesValidationErrors, FormField, R64Field],
 
-  components: { DeleteButton, ImageLoader, 'el-upload': Upload },
+  components: { DeleteButton, ImageLoader },
 
   data: () => ({
     file: null,
@@ -191,19 +168,34 @@ export default {
      * Responsd to the file change
      */
     fileChange(event) {
-      // If is a el-upload event
-      if (event.raw) {
-        this.fileName = event.name
-        this.file = event.raw
-      } else {
-        let path = event.target.value
-        let fileName = path.match(/[^\\/]*$/)[0]
-        this.fileName = fileName
-        this.file = this.$refs.fileField.files[0]
-      }
+      const path = event.target.value
+      this.fileName = path.match(/[^\\/]*$/)[0]
+      this.file = this.$refs.fileField.files[0]
 
       this.previewFile = URL.createObjectURL(this.file)
 
+      this.emitInputEvent()
+    },
+
+    onDrop(event) {
+      const file = event.dataTransfer.files[0]
+      if (!file) {
+        return
+      }
+
+      this.file = file
+      this.fileName = file.name
+      this.previewFile = URL.createObjectURL(file)
+      this.emitInputEvent()
+    },
+
+    clearSelectedFile() {
+      this.file = null
+      this.fileName = ''
+      this.previewFile = null
+      if (this.$refs.fileField) {
+        this.$refs.fileField.value = ''
+      }
       this.emitInputEvent()
     },
 

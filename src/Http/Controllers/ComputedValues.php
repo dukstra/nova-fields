@@ -1,6 +1,6 @@
 <?php
 
-namespace R64\NovaFields\Http\Controllers;
+namespace Dukstra\NovaFields\Http\Controllers;
 
 class ComputedValues
 {
@@ -8,10 +8,10 @@ class ComputedValues
 
     public function __construct($values)
     {
-        return $this->values = (object) $values;
+        $this->values = (object) $values;
     }
 
-    public function __get($key): bool
+    public function __get($key): mixed
     {
         return property_exists($this->values, $key) ? $this->values->$key : null;
     }

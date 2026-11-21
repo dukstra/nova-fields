@@ -1,6 +1,6 @@
 <?php
 
-namespace R64\NovaFields\Http\Controllers;
+namespace Dukstra\NovaFields\Http\Controllers;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -37,7 +37,7 @@ class ComputedController
         $cb = $request->input('computeOptions') ? $field->computeOptionsCallback : $field->computeCallback;
 
         if (!is_callable($cb)) {
-            return;
+            return null;
         }
 
         $value = call_user_func($cb, new ComputedValues($request->input('values')));

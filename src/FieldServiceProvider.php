@@ -1,6 +1,6 @@
 <?php
 
-namespace R64\NovaFields;
+namespace Dukstra\NovaFields;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;
@@ -18,7 +18,7 @@ class FieldServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Nova::serving(function (ServingNova $event) {
-            Nova::script('nova-fields', __DIR__.'/../dist/js/field.js');
+            Nova::mix('nova-fields', __DIR__.'/../dist/mix-manifest.json');
         });
 
         Route::group($this->routeConfiguration(), function () {
@@ -44,7 +44,7 @@ class FieldServiceProvider extends ServiceProvider
     protected function routeConfiguration(): array
     {
         return [
-            'namespace' => 'R64\NovaFields\Http\Controllers',
+            'namespace' => 'Dukstra\NovaFields\Http\Controllers',
             'domain' => config('nova.domain', null),
             'as' => 'nova.r64.api.',
             'prefix' => 'nova-r64-api',

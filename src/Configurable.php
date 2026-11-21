@@ -1,6 +1,6 @@
 <?php
 
-namespace R64\NovaFields;
+namespace Dukstra\NovaFields;
 
 use Config;
 use Illuminate\Support\Str;
@@ -279,19 +279,6 @@ trait Configurable
         return $this->withMeta(['onlyWhen' => $field]);
     }
 
-    /**
-     * Overriding the base method in order to grab the model ID.
-     *
-     * @param mixed  $resource  The resource class
-     * @param string $attribute The attribute of the resource
-     *
-     * @return mixed
-     */
-    protected function resolveAttribute($resource, $attribute)
-    {
-        $this->setResourceId(data_get($resource, 'id'));
-        return parent::resolveAttribute($resource, $attribute);
-    }
     /**
      * Sets the
      *
