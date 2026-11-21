@@ -1,6 +1,6 @@
 <?php
 
-namespace R64\NovaFields\Http\Controllers;
+namespace Dukstra\NovaFields\Http\Controllers;
 
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;

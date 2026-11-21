@@ -42,13 +42,13 @@ Looking forward to see your feedback.
 ## Install
 
 Run this command in your nova project:
-`composer require 64robots/nova-fields`
+`composer require dukstra/nova-fields`
 
 Usage:
 
 ```php
-// use R64\NovaFields\<NAME OF THE FIELD>;
-use R64\NovaFields\Boolean;
+// use Dukstra\NovaFields\<NAME OF THE FIELD>;
+use Dukstra\NovaFields\Boolean;
 
 Boolean::make('Activo', 'active')
                 ->yesLabel('Yeah')

@@ -1,6 +1,6 @@
 <?php
 
-namespace R64\NovaFields\Http\Controllers;
+namespace Dukstra\NovaFields\Http\Controllers;
 
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Http\Controllers\AssociatableController as Controller;

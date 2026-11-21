@@ -19,7 +19,7 @@ This field allows you to group together Nova Fields and merge their key-value-pa
 Create a new Json field passing an array of Nova Fields as second param. Attribute names can be passed as third param.
 
 ```php
-use R64\NovaFields\JSON;
+use Dukstra\NovaFields\JSON;
 
 JSON::make('Content', [
     Text::make('Name'),
@@ -98,7 +98,7 @@ Create a new Row field passing an array of Nova Fields as a second param. Attrib
 As we are using other Nova Fields]. We can customize the classes and hide the field labels.
 
 ```php
-use R64\NovaFields\Row;
+use Dukstra\NovaFields\Row;
 
 Row::make('Lines', [
       Number::make('Quantity')

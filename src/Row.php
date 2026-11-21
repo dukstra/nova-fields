@@ -1,6 +1,6 @@
 <?php
 
-namespace R64\NovaFields;
+namespace Dukstra\NovaFields;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
